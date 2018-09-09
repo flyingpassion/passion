@@ -10,6 +10,8 @@ COLLATE utf8_general_ci;
 
 use `passion_authority`;
 
+
+
 -- 用户信息
 drop table if exists t_baseuser;
 create table t_baseuser(
