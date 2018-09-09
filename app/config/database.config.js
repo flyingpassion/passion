@@ -17,8 +17,6 @@ const mysqlConfig = {
     }
 };
 
-
-
 module.exports = {
     mysql:mysqlConfig,
 };

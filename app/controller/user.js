@@ -193,6 +193,7 @@ class UserController extends Controller {
             this.ctx.body = this.helper.webResult(1010, this.ctx.gettext('getLeadedError'), e)
         }
     }
+
 }
 
 module.exports = UserController;
