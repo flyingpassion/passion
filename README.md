@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # passion_authority
 
 
@@ -35,4 +35,4 @@ $ npm stop
 =======
 # passion
 egg_框架测试项目
->>>>>>> Create README.md
+
