@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # passion_authority
 
 
@@ -31,3 +32,7 @@ $ npm stop
 
 
 [egg]: https://eggjs.org
+=======
+# passion
+egg_框架测试项目
+>>>>>>> Create README.md
