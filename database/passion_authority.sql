@@ -57,7 +57,7 @@ create table t_role (
 -- 权限信息表
 drop table if exists t_permission;
 create table t_permission(
-	`id` bigint primary key comment '权限编号',
+	`id` bigint primary key AUTO_INCREMENT comment '权限编号',
 	`name` varchar(100) default '' comment '权限名称',
 	`description` varchar(200) default '' comment '权限描述信息',
 	`enable` int(4) default 0 comment '0:不可用,1:可用'
