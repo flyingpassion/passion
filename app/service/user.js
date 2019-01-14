@@ -5,7 +5,7 @@ const {table} = require("../constant/dbConstant");
 
 class UserService extends Service {
 
-    constructor(param){
+    constructor(param) {
         super(param);
         this.mysql = this.app.mysql;
     }
@@ -39,12 +39,16 @@ class UserService extends Service {
      * @param enable        用户是否有效,0:禁用,1:启用
      * @returns {Promise.<*>}
      */
-    async addUser({id,typeId,pId,orgId,token,username,password,nickname,realName,
-                      phoneNumber,email,createTime,signature,enable}) {
+    async addUser({
+                      id, typeId, pId, orgId, token, username, password, nickname, realName,
+                      phoneNumber, email, createTime, signature, enable
+                  }) {
 
         return await this.mysql.insert(table.baseUser,
-            {id,typeId,pId,orgId,token,username,password,
-                nickname,realName,phoneNumber,email,createTime,signature,enable});
+            {
+                id, typeId, pId, orgId, token, username, password,
+                nickname, realName, phoneNumber, email, createTime, signature, enable
+            });
     }
 
     /**
@@ -62,30 +66,56 @@ class UserService extends Service {
      * @param enable        用户是否有效,0:禁用,1:启用
      * @returns {Promise.<*>}
      */
-    async updateUser({id,typeId,pId,orgId,username,nickname,realName,phoneNumber,email,signature,enable}) {
+    async updateUser({id, typeId, pId, orgId, username, nickname, realName, phoneNumber, email, signature, enable}) {
 
         return await this.mysql.update(table.baseUser,
-            {id,typeId,pId,orgId,username, nickname,realName,phoneNumber,email,signature,enable});
+            {id, typeId, pId, orgId, username, nickname, realName, phoneNumber, email, signature, enable});
     }
 
-    async updateUserPwd({id,password}){
+    /**
+     * 修改用户密码
+     * @param id 用户编号
+     * @param password 用户密码
+     * @returns {Promise.<*>}
+     */
+    async updateUserPwd({id, password}) {
 
-        return await this.mysql.update(table.baseUser,{id,password})
+        return await this.mysql.update(table.baseUser, {id, password})
 
     }
 
-    async findUserById(id){
-        return await this.mysql.get(table.baseUser,{id:parseInt(id)});
+    /**
+     * 通过用户编号查询用户信息
+     * @param id 用户编号
+     * @returns {Promise.<*>}
+     */
+    async findUserById(id) {
+        return await this.mysql.get(table.baseUser, {id: parseInt(id)});
     }
 
-    async findLeadList(id){
+    /**
+     * 查询当前用户有权限管理的人员
+     * @param id 用户编号
+     * @returns {Promise.<Array>}
+     */
+    async findLeadList(id) {
 
-        let dataList =  await this.mysql.select(table.baseUser,{where:{pId:id}})
-        return dataList.map(item=>{
-            item.password =null;
+        let dataList = await this.mysql.select(table.baseUser, {where: {pId: id}})
+        return dataList.map(item => {
+            item.password = null;
             item.token = null;
             return item;
         })
+    }
+
+    /**
+     * 删除用户信息
+     * @param ids
+     * @returns {Promise.<void>}
+     */
+    async deleteUserByIds(ids) {
+
+        this.mysql.delete(table.baseUser, {id: ids.split(",")})
     }
 }
 
