@@ -1,7 +1,9 @@
+
+
 /**
  * 用户相关路由信息配置
  */
-class userRouter{
+class userRouter {
 
     /**
      * 执行路由配置信息加载
