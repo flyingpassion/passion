@@ -173,9 +173,9 @@ class rules {
             let temp = [];
 
             for (let key of Object.keys(rule)) {
-                if (typeof rule[key] ==='object'){
+                if (typeof rule[key] === 'object') {
                     temp.push({[key]: rule[key]})
-                }else {
+                } else {
                     temp.push({[key]: {type: rule[key]}})
                 }
             }
